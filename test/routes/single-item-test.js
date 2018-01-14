@@ -14,13 +14,13 @@ describe('Server path: /items/:id', () => {
   // Write your test blocks below:
   describe('GET', () => {
     it('should render the item\s title and description', async () => {
-      const itemToCreate = await seedItemToDatabase();
+      const item = await seedItemToDatabase();
 
       const response = await request(app)
-        .get(`/items/${itemToCreate._id}`);
+        .get(`/items/${item._id}`);
 
-      assert.include(parseTextFromHTML(response.text, '#item-title'), itemToCreate.title);
-      assert.include(parseTextFromHTML(response.text, '#item-description'), itemToCreate.description);
+      assert.include(parseTextFromHTML(response.text, '#item-title'), item.title);
+      assert.include(parseTextFromHTML(response.text, '#item-description'), item.description);
     });
 
     it('should show an error for a non-existent item', async () => {

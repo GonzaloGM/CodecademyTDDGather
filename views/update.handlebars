@@ -23,7 +23,7 @@
         </div>
         <div class="create-column">
             <h2 class="form-title">Update item</h2>
-            <form class="input-form" action="/items/{{itemToUpdate._id}}/update" method="post" >
+            <form class="input-form" action="/items/{{itemToUpdate._id}}/update?_method=PATCH" method="post" >
                 <label class="form-label" for="title">Title</label>
                 <input id="title-input" name="title" maxlength="50" value="{{itemToUpdate.title}}"/>
 

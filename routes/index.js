@@ -1,7 +1,6 @@
 const router = require('express').Router();
 
 const Item = require('../models/item');
-const mongoose = require('mongoose');
 
 router.get('/', async (req, res, next) => {
   const items = await Item.find({});
@@ -39,7 +38,7 @@ router.get('/items/:id/update', async(req, res, next) => {
   }
 });
 
-router.post('/items/:id/update', async(req, res, next) => {
+router.patch('/items/:id/update', async(req, res, next) => {
   try {
     const itemToUpdate = await Item.findOneAndUpdate({'_id': req.params.id}, req.body).exec();
     res.redirect(`/items/${req.params.id}`);
@@ -53,7 +52,7 @@ router.post('/items/:id/update', async(req, res, next) => {
   }
 });
 
-router.post('/items/:id/delete', async(req, res, next) => {
+router.delete('/items/:id/delete', async(req, res, next) => {
   try {
     const itemToDelete = await Item.findOneAndRemove({'_id': req.params.id}).exec();
     res.redirect(`/`);

@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const methodOverride = require('method-override');
 const expressHandlebars = require('express-handlebars');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
@@ -7,6 +8,8 @@ const bodyParser = require('body-parser');
 const index = require('./routes/index');
 
 const app = express();
+
+app.use(methodOverride('_method'))
 
 // View engine setup
 app.engine('handlebars', expressHandlebars({defaultLayout: 'app'}));
